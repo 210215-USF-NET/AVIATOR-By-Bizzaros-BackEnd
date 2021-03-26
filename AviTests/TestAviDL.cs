@@ -215,6 +215,17 @@ namespace AviTests
                 Assert.Equal(1, script.PilotID);
             }
         }
+        [Fact]
+        public void GetPilotsShouldGetPilots()
+        {
+            using (var ctx = new AviDBContext(options))
+            {
+                IAviRepo repo = new AviRepoDB(ctx);
+                List<Pilot> pilots = repo.GetPilots();
+                Assert.NotNull(pilots);
+                Assert.NotEmpty(pilots);
+            }
+        }
         private void Seed()
         {
             using (var ctx = new AviDBContext(options))

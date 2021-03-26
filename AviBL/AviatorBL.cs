@@ -84,5 +84,10 @@ namespace AviBL
         {
             return _repo.GetScriptByPilotID(pilotID);
         }
+
+        public List<Pilot> GetPilots()
+        {
+            return _repo.GetPilots();
+        }
     }
 }
