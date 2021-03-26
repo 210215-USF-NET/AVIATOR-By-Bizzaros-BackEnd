@@ -7,7 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace AVIATOR
+namespace AviREST
 {
     public class Program
     {

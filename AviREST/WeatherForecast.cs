@@ -1,6 +1,6 @@
 using System;
 
-namespace AVIATOR
+namespace AviREST
 {
     public class WeatherForecast
     {

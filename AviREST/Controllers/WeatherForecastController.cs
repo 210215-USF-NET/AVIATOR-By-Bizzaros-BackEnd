@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace AVIATOR.Controllers
+namespace AviREST.Controllers
 {
     [ApiController]
     [Route("[controller]")]
