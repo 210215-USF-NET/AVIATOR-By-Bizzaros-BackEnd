@@ -22,6 +22,7 @@ namespace AviBL
         List<File> GetFilesBySceneId(int sfID);
         List<Contributor> GetContributorsByPilotID(int pilotID);
         List<Contributor> GetContributorsByUserID(int userID);
+        List<Pilot> GetPilots();
         File DeleteFile(File selectedFile);
     }
 }

@@ -23,5 +23,6 @@ namespace AviDL
         List<Contributor> GetContributorsByPilotID(int pilotID);
         List<Contributor> GetContributorsByUserID(int userID);
         File DeleteFile(File selectedFile);
+        List<Pilot> GetPilots();
     }
 }

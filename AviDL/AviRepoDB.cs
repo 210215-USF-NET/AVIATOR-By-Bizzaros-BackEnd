@@ -103,8 +103,18 @@ namespace AviDL
         public Pilot GetPilotByID(int id)
         {
             return _context.Pilots
+                .Where(p => p.ID == id)
+                .Include(p => p.Script)
+                .ThenInclude(s => s.ScriptWriter)
+                .Include(p => p.Producer)
+                .Include(p => p.Files)
+                .ThenInclude(f => f.Uploader)
+                .Include(p => p.Scenes)
+                .ThenInclude(s => s.SceneFiles)
+                .ThenInclude(sf => sf.File)
+                .ThenInclude(f => f.Uploader)
                 .AsNoTracking()
-                .FirstOrDefault(p => p.ID == id);
+                .FirstOrDefault();
         }
 
         public List<Scene> GetScenesByPilotID(int pilotID)
@@ -120,6 +130,13 @@ namespace AviDL
             return _context.Scripts
                 .AsNoTracking()
                 .FirstOrDefault(sc => sc.PilotID == pilotID);
+        }
+
+        public List<Pilot> GetPilots()
+        {
+            return _context.Pilots
+                .AsNoTracking()
+                .ToList();
         }
     }
 }
