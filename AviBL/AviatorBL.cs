@@ -50,9 +50,9 @@ namespace AviBL
             return _repo.DeleteFile(selectedFile);
         }
 
-        public Contributor GetContributorByUserID(int userID)
+        public List<Contributor> GetContributorsByUserID(int userID)
         {
-            return _repo.GetContributorByUserID(userID);
+            return _repo.GetContributorsByUserID(userID);
         }
 
         public List<Contributor> GetContributorsByPilotID(int pilotID)

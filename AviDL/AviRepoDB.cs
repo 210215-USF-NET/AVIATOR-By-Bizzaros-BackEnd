@@ -66,11 +66,12 @@ namespace AviDL
             return selectedFile;
         }
 
-        public Contributor GetContributorByUserID(int userID)
+        public List<Contributor> GetContributorsByUserID(int userID)
         {
             return _context.Contributors
                 .AsNoTracking()
-                .FirstOrDefault(con => con.UserID == userID);
+                .Where(c => c.UserID == userID)
+                .ToList();
         }
 
         public List<Contributor> GetContributorsByPilotID(int pilotID)

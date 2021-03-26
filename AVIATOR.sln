@@ -9,7 +9,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AviModels", "AviModels\AviM
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AviDL", "AviDL\AviDL.csproj", "{3AB17B5E-B712-459F-9EA0-C2CCF0FF73D2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AviBL", "AviBL\AviBL.csproj", "{4113047B-3730-400C-851C-C1744C3EED7F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AviBL", "AviBL\AviBL.csproj", "{4113047B-3730-400C-851C-C1744C3EED7F}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AviTests", "AviTests\AviTests.csproj", "{7ED87CBB-19F0-4871-8AD2-FC041AF9F068}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{4113047B-3730-400C-851C-C1744C3EED7F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4113047B-3730-400C-851C-C1744C3EED7F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4113047B-3730-400C-851C-C1744C3EED7F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7ED87CBB-19F0-4871-8AD2-FC041AF9F068}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7ED87CBB-19F0-4871-8AD2-FC041AF9F068}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7ED87CBB-19F0-4871-8AD2-FC041AF9F068}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7ED87CBB-19F0-4871-8AD2-FC041AF9F068}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
