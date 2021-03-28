@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Azure.Storage.Blobs;
 
 namespace AviREST.Controllers
 {
@@ -13,9 +14,11 @@ namespace AviREST.Controllers
     public class ScriptController : ControllerBase
     {
         private IAviBL _aviBL;
-        public ScriptController(IAviBL aviBL)
+        private BlobServiceClient _blobSC;
+        public ScriptController(IAviBL aviBL, BlobServiceClient blobSC)
         {
             _aviBL = aviBL;
+            _blobSC = blobSC;
         }
         [HttpPost]
         public CreatedID Create(ScriptCreate apiModel)
