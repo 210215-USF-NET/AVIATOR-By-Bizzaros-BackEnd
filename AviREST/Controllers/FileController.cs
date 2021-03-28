@@ -34,6 +34,12 @@ namespace AviREST.Controllers
             apiModel.FileURL = blobClient.Uri.AbsoluteUri;
             return new CreatedID { ID = _aviBL.AddFile(apiModel.ToDLModel()).ID };
         }
+        [HttpPost]
+        [Route("/SceneFile")]
+        public CreatedID CreateSceneFile(SceneFileCreate apiModel)
+        {
+            return new CreatedID { ID = _aviBL.AddSceneFile(apiModel.ToDLModel()).ID };
+        }
         private Stream GenerateStreamFromString(string str)
         {
             var stream = new MemoryStream();
