@@ -15,7 +15,7 @@ namespace AviTests
         [Fact]
         public async Task FileDetails_FromDLModelShouldMapToFileDetails()
         {
-            var newFile = new File { ID = 1, FileURL = "fileUrl", FileName = "filename", FileDescription = "description", ParsedID = "parsedId", Uploader = new User { ID = 1, UserName = "userMinimalName" } };
+            var newFile = new File { ID = 1, FileURL = "fileUrl", FileName = "filename", FileDescription = "description", ParsedID = "parsedId", Uploader = new User { ID = 1, UserName = "userMinimalName" }, Pilot = new Pilot {Files = new List<File>(), Script = new Script {ScriptWriter = new User()}}, SceneFiles = new List<SceneFile>() };
             var result = FileDetails.FromDLModel(newFile);
             Assert.Equal(result.ID, newFile.ID);
             Assert.Equal(result.FileURL, newFile.FileURL);
@@ -46,7 +46,8 @@ namespace AviTests
                 Producer = new User { ID = 1, UserName = "userName" },
                 PilotDescription = "description",
                 Scenes = new List<Scene> { new Scene { SceneFiles = new List<SceneFile> { new SceneFile() } } },
-                Files = new List<File> { new File { Uploader = new User() } }
+                Files = new List<File> { new File { Uploader = new User() } },
+                Script = new Script { ScriptWriter = new User() }
             };
             var result = PilotDetails.FromDLModel(newPilot);
             Assert.Equal(newPilot.ID, result.ID);

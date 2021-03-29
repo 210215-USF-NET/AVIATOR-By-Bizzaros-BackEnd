@@ -44,6 +44,9 @@ namespace AviTests
                 Files = new List<File> { new File() },
                 Scenes = new List<Scene> {
                     new Scene { SceneFiles = new List<SceneFile> { new SceneFile()} }
+                },
+                Script = new Script {
+                    ScriptWriter = new User()
                 }
             };
             _aviMock.Setup(x => x.GetPilotByID(It.IsAny<int>())).Returns(newPilot);

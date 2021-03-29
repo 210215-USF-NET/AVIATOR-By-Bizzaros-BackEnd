@@ -7,11 +7,11 @@ using AviDL;
 
 namespace AviBL
 {
-    public class IAviatorBL : IAviBL
+    public class AviatorBL : IAviBL
     {
         private IAviRepo _repo;
 
-        public IAviatorBL(IAviRepo repo)
+        public AviatorBL(IAviRepo repo)
         {
             _repo = repo;
         }
