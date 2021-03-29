@@ -37,7 +37,7 @@ namespace AviREST
             });
             services.AddDbContext<AviDBContext>(options => options.UseNpgsql(Configuration.GetConnectionString("AviDL")));
             services.AddScoped<IAviRepo, AviRepoDB>();
-            services.AddScoped<IAviBL, AviatorBL>();
+            services.AddScoped<IAviBL, IAviatorBL>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
