@@ -35,9 +35,10 @@ namespace AviREST
             {
                 options.AddPolicy(name: CorsPolicyName, builder =>
                 {
-                    builder.WithOrigins("https://p2-aviator.azurewebsites.net", "http://localhost:4200")
+                    builder
                     .AllowAnyHeader()
-                    .AllowAnyMethod();
+                    .AllowAnyMethod()
+                    .AllowAnyOrigin();
                 });
             });
 
