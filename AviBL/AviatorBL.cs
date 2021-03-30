@@ -23,7 +23,7 @@ namespace AviBL
             if (user2Return == null)
             {
                 user2Return = new User();
-                user2Return.UserName = userEmail;
+                user2Return.Email = userEmail;
                 return await _repo.AddUserAsync(user2Return);
             }
             else
