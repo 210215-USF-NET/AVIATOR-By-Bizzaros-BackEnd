@@ -22,17 +22,22 @@ namespace AviREST.Controllers
             _blobSC = blobSC;
         }
         [HttpPost]
-        public CreatedID Create([FromForm] FileCreate apiModel)
+        [ProducesResponseType(typeof(FileMinimal), 200)]
+        public IActionResult Create([FromForm] FileCreate apiModel)
         {
             BlobContainerClient containerClient = _blobSC.GetBlobContainerClient($"pilot{apiModel.PilotID}");
+            if (!containerClient.Exists())
+            {
+                containerClient = _blobSC.CreateBlobContainer($"pilot{apiModel.PilotID}", Azure.Storage.Blobs.Models.PublicAccessType.BlobContainer);
+            }
             BlobClient blobClient = containerClient.GetBlobClient(apiModel.FileName);
             if (blobClient.Exists())
             {
-                return new CreatedID { ID = -1 };
+                return BadRequest(new { error = "File name already taken for this pilot" });
             }
             blobClient.Upload(apiModel.File.OpenReadStream());
             apiModel.FileURL = blobClient.Uri.AbsoluteUri;
-            return new CreatedID { ID = _aviBL.AddFile(apiModel.ToDLModel()).ID };
+            return Ok(FileMinimal.FromDLModel(_aviBL.AddFile(apiModel.ToDLModel())));
         }
         [HttpPost]
         [Route("/SceneFile")]
