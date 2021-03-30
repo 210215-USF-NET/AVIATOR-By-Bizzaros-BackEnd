@@ -29,5 +29,7 @@ namespace AviBL
         Task<Contributor> GetContributorById(int userId, int pilotId);
         Task<User> AddUser(User userdetail);
         Task<User> UpdateUser(int id,User user);
+        void DeleteScriptIfExists(int pilotID);
+        void DeleteScenesIfExists(int pilotID);
     }
 }
