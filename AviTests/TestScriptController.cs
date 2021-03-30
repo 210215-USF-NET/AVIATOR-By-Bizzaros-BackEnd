@@ -16,28 +16,29 @@ namespace AviTests
     public class TestScriptController
     {
         private Mock<IAviBL> _aviMock;
-        private Mock<BlobServiceClient> _bscMock;
+        private BlobServiceClient _blobSC;
         public TestScriptController()
         {
             _aviMock = new Mock<IAviBL>();
-            _bscMock = new Mock<BlobServiceClient>();
+            _blobSC = new BlobServiceClient("DefaultEndpointsProtocol=http;AccountName=devstoreaccount1;AccountKey=Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw==;BlobEndpoint=http://127.0.0.1:10000/devstoreaccount1;");
+            foreach (var c in _blobSC.GetBlobContainers())
+            {
+                _blobSC.DeleteBlobContainer(c.Name);
+            }
         }
 
         [Fact]
         public async Task CreateShouldReturnCreatedID()
         {
             var newScene = new Scene() { ID = 1};
-            var newScript = new Script() { ID = 1};
-            var ccMock = new Mock<BlobContainerClient>();
-            var bcMock = new Mock<BlobClient>();
+            var newScript = new Script() { ID = 1 };
             var newScriptCreate = new ScriptCreate { PilotID = 1,
                 Scenes = new List<SceneCreate> { new SceneCreate()}
             };
             _aviMock.Setup(x => x.AddScene(It.IsAny<Scene>())).Returns(newScene);
             _aviMock.Setup(x => x.AddScript(It.IsAny<Script>())).Returns(newScript);
-          // _bscMock.Setup(x => x.CreateBlobContainer(It.IsAny<string>())).Returns(ccMock);
 
-            var newAviqtorBL = new ScriptController(_aviMock.Object, _bscMock.Object);
+            var newAviqtorBL = new ScriptController(_aviMock.Object, _blobSC);
             var result = newAviqtorBL.Create(newScriptCreate);
 
             Assert.IsAssignableFrom<CreatedID>(result);
