@@ -31,5 +31,6 @@ namespace AviBL
         Task<User> UpdateUser(int id,User user);
         void DeleteScriptIfExists(int pilotID);
         void DeleteScenesIfExists(int pilotID);
+        List<Pilot> GetPilotsByProducerID(int producerID);
     }
 }

@@ -137,5 +137,10 @@ namespace AviBL
         {
             _repo.DeleteScenesIfExists(pilotID);
         }
+
+        public List<Pilot> GetPilotsByProducerID(int producerID)
+        {
+            return _repo.GetPilotsByProducerID(producerID);
+        }
     }
 }

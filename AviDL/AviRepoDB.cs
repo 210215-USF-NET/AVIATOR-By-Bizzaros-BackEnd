@@ -191,5 +191,10 @@ namespace AviDL
             _context.Scenes.RemoveRange(scenes);
             _context.SaveChanges();
         }
+
+        public List<Pilot> GetPilotsByProducerID(int producerID)
+        {
+            return _context.Pilots.Where(p => p.ProducerID == producerID).ToList();
+        }
     }
 }

@@ -31,5 +31,6 @@ namespace AviDL
         Task<User> UpdateUserAsync(int id,User user);
         void DeleteScriptIfExists(int pilotID);
         void DeleteScenesIfExists(int pilotID);
+        List<Pilot> GetPilotsByProducerID(int producerID);
     }
 }

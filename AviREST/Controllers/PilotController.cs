@@ -18,9 +18,10 @@ namespace AviREST.Controllers
             _aviBL = aviBL;
         }
         [HttpGet]
-        public IEnumerable<PilotListItem> Get()
+        public IEnumerable<PilotListItem> Get([FromQuery] int? userID)
         {
-            return _aviBL.GetPilots().Select(pilot => PilotListItem.FromDLModel(pilot));
+            if (userID == null) return _aviBL.GetPilots().Select(pilot => PilotListItem.FromDLModel(pilot));
+            return _aviBL.GetPilotsByProducerID((int)userID).Select(pilot => PilotListItem.FromDLModel(pilot));
         }
         [HttpGet]
         [Route("{id}")]
