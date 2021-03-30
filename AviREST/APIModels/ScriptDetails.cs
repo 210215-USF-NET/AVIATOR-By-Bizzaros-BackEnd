@@ -13,6 +13,7 @@ namespace AviREST.APIModels
         public string ScriptURL { get; set; }
         public static ScriptDetails FromDLModel(Script s)
         {
+            if (s == null) return null;
             return new ScriptDetails { ID = s.ID, ScriptURL = s.ScriptURL, Scriptwriter = UserMinimal.FromDLModel(s.ScriptWriter) };
         }
     }
