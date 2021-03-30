@@ -27,7 +27,7 @@ namespace AviTests
             var pilots = new List<Pilot> { new Pilot(),new Pilot() };
             _aviMock.Setup(x => x.GetPilots()).Returns(pilots);
             var newAviqtorBL = new PilotController(_aviMock.Object);
-            var result = newAviqtorBL.Get();
+            var result = newAviqtorBL.Get(null);
 
             Assert.IsAssignableFrom<IEnumerable<PilotListItem>>(result);
             Assert.Equal(2,result.Count());
