@@ -29,7 +29,8 @@ namespace AviREST.Controllers
                 sceneApiModel.PilotID = apiModel.PilotID;
                 _aviBL.AddScene(sceneApiModel.ToDLModel());
             }
-            BlobContainerClient containerClient = _blobSC.CreateBlobContainer($"pilot{apiModel.PilotID}", Azure.Storage.Blobs.Models.PublicAccessType.BlobContainer);
+            BlobContainerClient containerClient = _blobSC.GetBlobContainerClient($"pilot{apiModel.PilotID}");
+            if (!containerClient.Exists()) containerClient = _blobSC.CreateBlobContainer($"pilot{apiModel.PilotID}", Azure.Storage.Blobs.Models.PublicAccessType.BlobContainer);
             BlobClient blobClient = containerClient.GetBlobClient($"script{Guid.NewGuid().ToString()}.html");
             blobClient.Upload(GenerateStreamFromString(apiModel.ScriptBody));
             apiModel.ScriptURL = blobClient.Uri.AbsoluteUri;
