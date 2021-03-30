@@ -29,5 +29,7 @@ namespace AviDL
         Task<User> AddUserAsync(User newUser);
         Task<Contributor> GetContributorById(int userId, int pilotId);
         Task<User> UpdateUserAsync(int id,User user);
+        void DeleteScriptIfExists(int pilotID);
+        void DeleteScenesIfExists(int pilotID);
     }
 }

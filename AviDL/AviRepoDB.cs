@@ -177,5 +177,19 @@ namespace AviDL
                 .AsNoTracking()
                 .ToList();
         }
+
+        public void DeleteScriptIfExists(int pilotID)
+        {
+            Script script = _context.Scripts.FirstOrDefault(sc => sc.PilotID == pilotID);
+            if (script != null) _context.Scripts.Remove(script);
+            _context.SaveChanges();
+        }
+
+        public void DeleteScenesIfExists(int pilotID)
+        {
+            IEnumerable<Scene> scenes = _context.Scenes.Where(sc => sc.PilotID == pilotID);
+            _context.Scenes.RemoveRange(scenes);
+            _context.SaveChanges();
+        }
     }
 }

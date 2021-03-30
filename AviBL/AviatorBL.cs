@@ -127,5 +127,15 @@ namespace AviBL
         {
             return _repo.GetPilots();
         }
+
+        public void DeleteScriptIfExists(int pilotID)
+        {
+            _repo.DeleteScriptIfExists(pilotID);
+        }
+
+        public void DeleteScenesIfExists(int pilotID)
+        {
+            _repo.DeleteScenesIfExists(pilotID);
+        }
     }
 }
