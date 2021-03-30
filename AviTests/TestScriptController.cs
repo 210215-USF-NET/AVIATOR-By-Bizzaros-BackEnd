@@ -35,7 +35,7 @@ namespace AviTests
             };
             _aviMock.Setup(x => x.AddScene(It.IsAny<Scene>())).Returns(newScene);
             _aviMock.Setup(x => x.AddScript(It.IsAny<Script>())).Returns(newScript);
-           // _bscMock.Setup(x => x.CreateBlobContainer(It.IsAny<string>())).Returns(ccMock);
+          // _bscMock.Setup(x => x.CreateBlobContainer(It.IsAny<string>())).Returns(ccMock);
 
             var newAviqtorBL = new ScriptController(_aviMock.Object, _bscMock.Object);
             var result = newAviqtorBL.Create(newScriptCreate);
