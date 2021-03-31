@@ -18,7 +18,7 @@ namespace AviTests
             Seed();
         }
         [Fact]
-        public async Task AddContributorShouldAddContributor()
+        public void AddContributorShouldAddContributor()
         {
             Contributor c = new Contributor { PilotID = 1, UserID = 1 };
             using (var ctx = new AviDBContext(options))
@@ -37,7 +37,7 @@ namespace AviTests
             }
         }
         [Fact]
-        public async Task AddFileShouldAddFile()
+        public void AddFileShouldAddFile()
         {
             File f = new File { PilotID = 1, UploaderID = 1, FileURL = "https://www.google.com/" };
             using (var ctx = new AviDBContext(options))
@@ -55,7 +55,7 @@ namespace AviTests
             }
         }
         [Fact]
-        public async Task AddPilotShouldAddPilot()
+        public void AddPilotShouldAddPilot()
         {
             Pilot p = new Pilot { ProducerID = 4 };
             using (var ctx = new AviDBContext(options))
@@ -71,7 +71,7 @@ namespace AviTests
             }
         }
         [Fact]
-        public async Task AddSceneShouldAddScene()
+        public void AddSceneShouldAddScene()
         {
             Scene s = new Scene { SceneIndex = 1, PilotID = 1 };
             using (var ctx = new AviDBContext(options))
@@ -88,7 +88,7 @@ namespace AviTests
             }
         }
         [Fact]
-        public async Task AddSceneFileShouldAddSceneFile()
+        public void AddSceneFileShouldAddSceneFile()
         {
             SceneFile sf = new SceneFile { SceneID = 1, FileID = 1 };
             using (var ctx = new AviDBContext(options))
@@ -105,7 +105,7 @@ namespace AviTests
             }
         }
         [Fact]
-        public async Task AddScriptShouldAddScript()
+        public void AddScriptShouldAddScript()
         {
             Pilot p = new Pilot { ProducerID = 4 };
             Script s = new Script { ScriptWriterID = 5 };
@@ -126,7 +126,7 @@ namespace AviTests
             }
         }
         [Fact]
-        public async Task DeleteFileShouldDeleteFile()
+        public void DeleteFileShouldDeleteFile()
         {
             using (var ctx = new AviDBContext(options))
             {
@@ -140,7 +140,7 @@ namespace AviTests
             }
         }
         [Fact]
-        public async Task GetContributorsByUserIDShouldGetContributors()
+        public void GetContributorsByUserIDShouldGetContributors()
         {
             using (var ctx = new AviDBContext(options))
             {
@@ -151,7 +151,7 @@ namespace AviTests
             }
         }
         [Fact]
-        public async Task GetContributorsByPilotIDShouldGetContributors()
+        public void GetContributorsByPilotIDShouldGetContributors()
         {
             using (var ctx = new AviDBContext(options))
             {
@@ -162,7 +162,7 @@ namespace AviTests
             }
         }
         [Fact]
-        public async Task GetFilesByPilotIDShouldGetFiles()
+        public void GetFilesByPilotIDShouldGetFiles()
         {
             using (var ctx = new AviDBContext(options))
             {
@@ -173,7 +173,7 @@ namespace AviTests
             }
         }
         [Fact]
-        public async Task GetFilesBySceneIdShouldGetFiles()
+        public void GetFilesBySceneIdShouldGetFiles()
         {
             using (var ctx = new AviDBContext(options))
             {
@@ -184,7 +184,7 @@ namespace AviTests
             }
         }
         [Fact]
-        public async Task GetPilotByIDShouldGetPilot()
+        public void GetPilotByIDShouldGetPilot()
         {
             using (var ctx = new AviDBContext(options))
             {
@@ -195,7 +195,7 @@ namespace AviTests
             }
         }
         [Fact]
-        public async Task GetScenesByPilotIDShouldGetScenes()
+        public void GetScenesByPilotIDShouldGetScenes()
         {
             using (var ctx = new AviDBContext(options))
             {
@@ -206,7 +206,7 @@ namespace AviTests
             }
         }
         [Fact]
-        public async Task GetScriptsByPilotIDShouldGetScripts()
+        public void GetScriptsByPilotIDShouldGetScripts()
         {
             using (var ctx = new AviDBContext(options))
             {
@@ -217,7 +217,7 @@ namespace AviTests
             }
         }
         [Fact]
-        public async Task GetPilotsShouldGetPilots()
+        public void GetPilotsShouldGetPilots()
         {
             using (var ctx = new AviDBContext(options))
             {
@@ -227,7 +227,7 @@ namespace AviTests
                 Assert.NotEmpty(pilots);
             }
         }
-        private async Task Seed()
+        private void Seed()
         {
             using (var ctx = new AviDBContext(options))
             {

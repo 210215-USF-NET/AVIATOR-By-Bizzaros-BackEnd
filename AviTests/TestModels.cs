@@ -13,7 +13,7 @@ namespace AviTests
     {
 
         [Fact]
-        public async Task FileDetails_FromDLModelShouldMapToFileDetails()
+        public void FileDetails_FromDLModelShouldMapToFileDetails()
         {
             var newFile = new File { ID = 1, FileURL = "fileUrl", FileName = "filename", FileDescription = "description", ParsedID = "parsedId", Uploader = new User { ID = 1, UserName = "userMinimalName" }, Pilot = new Pilot {Files = new List<File>(), Script = new Script {ScriptWriter = new User()}}, SceneFiles = new List<SceneFile>() };
             var result = FileDetails.FromDLModel(newFile);
@@ -27,7 +27,7 @@ namespace AviTests
         }
 
         [Fact]
-        public async Task PilotCreate_ToDLModelShouldMapToPilot()
+        public void PilotCreate_ToDLModelShouldMapToPilot()
         {
             var newPilotCreate = new PilotCreate { ProducerID = 1, PilotName = "name", PilotDescription = "description" };
             var result = newPilotCreate.ToDLModel();
@@ -37,7 +37,7 @@ namespace AviTests
         }
 
         [Fact]
-        public async Task PilotDetails_ToDLModelShouldMapToPilotDetails()
+        public void PilotDetails_ToDLModelShouldMapToPilotDetails()
         {
             var newPilot = new Pilot
             {
@@ -58,7 +58,7 @@ namespace AviTests
         }
 
         [Fact]
-        public async Task PilotListItem_FromDLModelShouldMapToPilotListItem()
+        public void PilotListItem_FromDLModelShouldMapToPilotListItem()
         {
             var newPilot = new Pilot
             {
@@ -74,7 +74,7 @@ namespace AviTests
         }
 
         [Fact]
-        public async Task SceneCreate_ToDLModelShouldMapToScene()
+        public void SceneCreate_ToDLModelShouldMapToScene()
         {
             var newSceneCreate = new SceneCreate
             {
@@ -93,7 +93,7 @@ namespace AviTests
         }
 
         [Fact]
-        public async Task SceneDetails_FromDLModelShouldMapToSceneDetails()
+        public void SceneDetails_FromDLModelShouldMapToSceneDetails()
         {
             var newScene = new Scene
             {
@@ -113,7 +113,7 @@ namespace AviTests
         }
 
         [Fact]
-        public async Task ScriptCreate_ToDLModelShouldMapToScript()
+        public void ScriptCreate_ToDLModelShouldMapToScript()
         {
             var newScriptCreate = new ScriptCreate
             {
