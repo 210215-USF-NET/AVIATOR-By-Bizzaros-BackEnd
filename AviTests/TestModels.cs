@@ -178,5 +178,14 @@ namespace AviTests
             Assert.Equal(newScript.ScriptURL, result.ScriptURL);
             Assert.Equal(newScript.ScriptWriterID, result.Scriptwriter.ID);
         }
+
+        [Fact]
+        public void UserMinimal_FromDLModelShouldMapToUserMinimal()
+        {
+            var newUser = new User { ID = 1, UserName = "asdf" };
+            var result = UserMinimal.FromDLModel(newUser);
+            Assert.Equal(newUser.ID, result.ID);
+            Assert.Equal(newUser.UserName, result.UserName);
+        }
     }
 }
