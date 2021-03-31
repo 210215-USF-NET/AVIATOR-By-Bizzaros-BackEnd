@@ -155,5 +155,18 @@ namespace AviTests
             Assert.Equal(result.FileURL, newFile.FileURL);
             Assert.Equal(result.ParsedID, newFile.ParsedID);
         }
+
+        [Fact]
+        public void SceneFileCreate_ToDLModelShouldMapToSceneFile()
+        {
+            var newSceneFile = new SceneFileCreate
+            {
+                FileID = 1,
+                SceneID = 1
+            };
+            var result = newSceneFile.ToDLModel();
+            Assert.Equal(newSceneFile.FileID, result.FileID);
+            Assert.Equal(newSceneFile.SceneID, result.SceneID);
+        }
     }
 }
