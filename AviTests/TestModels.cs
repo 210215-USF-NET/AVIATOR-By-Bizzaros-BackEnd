@@ -168,5 +168,15 @@ namespace AviTests
             Assert.Equal(newSceneFile.FileID, result.FileID);
             Assert.Equal(newSceneFile.SceneID, result.SceneID);
         }
+
+        [Fact]
+        public void ScriptDetails_FromDLModelShouldMapToScriptDetails()
+        {
+            var newScript = new Script { ID = 1, PilotID = 1, ScriptURL = "https://google.com", ScriptWriter = new User { ID = 1 }, ScriptWriterID = 1 };
+            var result = ScriptDetails.FromDLModel(newScript);
+            Assert.Equal(newScript.ID, result.ID);
+            Assert.Equal(newScript.ScriptURL, result.ScriptURL);
+            Assert.Equal(newScript.ScriptWriterID, result.Scriptwriter.ID);
+        }
     }
 }
