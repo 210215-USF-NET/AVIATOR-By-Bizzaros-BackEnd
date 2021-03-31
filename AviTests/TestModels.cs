@@ -145,5 +145,15 @@ namespace AviTests
             Assert.Equal(newFile.FileName, result.FileName);
             Assert.Equal(newFile.ParsedID, result.ParsedID);
         }
+
+        [Fact]
+        public void FileMinimal_FromDLModelShouldMapToFileMinimal()
+        {
+            var newFile = new File { ID = 1, FileURL = "fileUrl", FileName = "filename", FileDescription = "description", ParsedID = "parsedId", Uploader = new User { ID = 1, UserName = "userMinimalName" }, Pilot = new Pilot { Files = new List<File>(), Script = new Script { ScriptWriter = new User() } }, SceneFiles = new List<SceneFile>() };
+            var result = FileMinimal.FromDLModel(newFile);
+            Assert.Equal(result.ID, newFile.ID);
+            Assert.Equal(result.FileURL, newFile.FileURL);
+            Assert.Equal(result.ParsedID, newFile.ParsedID);
+        }
     }
 }
