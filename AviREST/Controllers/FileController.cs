@@ -45,7 +45,7 @@ namespace AviREST.Controllers
         {
             return new CreatedID { ID = _aviBL.AddSceneFile(apiModel.ToDLModel()).ID };
         }
-        private Stream GenerateStreamFromString(string str)
+        private static Stream GenerateStreamFromString(string str)
         {
             var stream = new MemoryStream();
             var writer = new StreamWriter(stream);
