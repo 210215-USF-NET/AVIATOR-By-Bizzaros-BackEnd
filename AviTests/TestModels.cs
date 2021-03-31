@@ -126,5 +126,24 @@ namespace AviTests
             Assert.Equal(newScriptCreate.PilotID, result.PilotID);
             Assert.Equal(newScriptCreate.UserID, result.ScriptWriterID);
         }
+
+        [Fact]
+        public void FileCreate_ToDLModelShouldMapToFile()
+        {
+            var newFile = new FileCreate
+            {
+                FileDescription = "asdf",
+                PilotID = 1,
+                UserID = 1,
+                FileName = "file.txt",
+                ParsedID = "parsedid"
+            };
+            var result = newFile.ToDLModel();
+            Assert.Equal(newFile.FileDescription, result.FileDescription);
+            Assert.Equal(newFile.PilotID, result.PilotID);
+            Assert.Equal(newFile.UserID, result.UploaderID);
+            Assert.Equal(newFile.FileName, result.FileName);
+            Assert.Equal(newFile.ParsedID, result.ParsedID);
+        }
     }
 }
