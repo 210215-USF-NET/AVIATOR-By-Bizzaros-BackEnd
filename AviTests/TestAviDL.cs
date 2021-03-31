@@ -227,6 +227,20 @@ namespace AviTests
                 Assert.NotEmpty(pilots);
             }
         }
+        [Fact]
+        public async Task GetPilotsByProducerIDShouldGetPilots()
+        {
+            using (var ctx = new AviDBContext(options))
+            {
+                IAviRepo repo = new AviRepoDB(ctx);
+                List<Pilot> pilots = repo.GetPilotsByProducerID(1);
+                Assert.NotNull(pilots);
+                Assert.NotEmpty(pilots);
+                pilots = repo.GetPilotsByProducerID(999);
+                Assert.NotNull(pilots);
+                Assert.Empty(pilots);
+            }
+        }
         private async Task Seed()
         {
             using (var ctx = new AviDBContext(options))

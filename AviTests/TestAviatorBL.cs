@@ -183,5 +183,16 @@ namespace AviTests
             _aviatorBLMock.Verify(x => x.GetPilots());
         }
 
+        [Fact]
+        public async Task GetPilotsByProducerIDShouldGetPilots()
+        {
+            var pilots = new List<Pilot> { new Pilot() };
+            _aviatorBLMock.Setup(x => x.GetPilotsByProducerID(1)).Returns(pilots);
+            var newAviqtorBL = new AviatorBL(_aviatorBLMock.Object);
+            var result = newAviqtorBL.GetPilotsByProducerID(1);
+
+            Assert.Equal(result, pilots);
+            _aviatorBLMock.Verify(x => x.GetPilotsByProducerID(1));
+        }
     }
 }
