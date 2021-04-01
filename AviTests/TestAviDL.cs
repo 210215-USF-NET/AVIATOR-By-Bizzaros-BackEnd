@@ -228,7 +228,7 @@ namespace AviTests
             }
         }
         [Fact]
-        public async Task GetPilotsByProducerIDShouldGetPilots()
+        public void GetPilotsByProducerIDShouldGetPilots()
         {
             using (var ctx = new AviDBContext(options))
             {
