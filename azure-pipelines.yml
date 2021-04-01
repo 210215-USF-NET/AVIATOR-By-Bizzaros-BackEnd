@@ -31,15 +31,15 @@ steps:
   inputs:
     command: 'test'
     projects: '**/AviTests/*.csproj'
-    arguments: --configuration release --collect "Code Coverage"
+    arguments: --configuration release --collect "XPlat Code Coverage"
+
+- task: PublishCodeCoverageResults@1
+  inputs:
+    codeCoverageTool: 'Cobertura'
+    summaryFileLocation: '**/coverage.xml'
 
 - task: SonarCloudAnalyze@1
 
 - task: SonarCloudPublish@1
   inputs:
     pollingTimeoutSec: '300'
-
-- task: PublishCodeCoverageResults@1
-  inputs:
-    codeCoverageTool: 'Cobertura'
-    summaryFileLocation: '**/coverage.xml'
