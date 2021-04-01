@@ -21,7 +21,7 @@ namespace AviTests
         }
 
         [Fact]
-        public async Task AddFileShouldCallAddFile()
+        public void AddFileShouldCallAddFile()
         {
             var newFile = new File();
             _aviatorBLMock.Setup(x => x.AddFile(It.IsAny<File>())).Returns(newFile);
@@ -33,7 +33,7 @@ namespace AviTests
         }
 
         [Fact]
-        public async Task AddPilotShouldCallAddPilot()
+        public void AddPilotShouldCallAddPilot()
         {
             var newPilot = new Pilot();
             _aviatorBLMock.Setup(x => x.AddPilot(It.IsAny<Pilot>())).Returns(newPilot);
@@ -45,7 +45,7 @@ namespace AviTests
         }
 
         [Fact]
-        public async Task AddSceneFileShouldCallAddSceneFile()
+        public void AddSceneFileShouldCallAddSceneFile()
         {
             var newSceneFile = new SceneFile();
             _aviatorBLMock.Setup(x => x.AddSceneFile(It.IsAny<SceneFile>())).Returns(newSceneFile);
@@ -57,7 +57,7 @@ namespace AviTests
         }
 
         [Fact]
-        public async Task AddScriptShouldCallAddScript()
+        public void AddScriptShouldCallAddScript()
         {
             var newScript = new Script();
             _aviatorBLMock.Setup(x => x.AddScript(It.IsAny<Script>())).Returns(newScript);
@@ -69,7 +69,7 @@ namespace AviTests
         }
 
         [Fact]
-        public async Task DeleteFileShouldCallDeleteFile()
+        public void DeleteFileShouldCallDeleteFile()
         {
             var newFile = new File();
             _aviatorBLMock.Setup(x => x.DeleteFile(It.IsAny<File>())).Returns(newFile);
@@ -81,7 +81,7 @@ namespace AviTests
         }
 
         [Fact]
-        public async Task GetContributorsByUserIDShouldCallGetContributorsByUserID()
+        public void GetContributorsByUserIDShouldCallGetContributorsByUserID()
         {
             int userId = 1;
             var contributors = new List<Contributor> { new Contributor() { UserID = 1} };
@@ -94,7 +94,7 @@ namespace AviTests
         }
 
         [Fact]
-        public async Task GetContributorsByPilotIDShouldCallGetContributorsByPilotID()
+        public void GetContributorsByPilotIDShouldCallGetContributorsByPilotID()
         {
             int pilotId = 1;
             var contributors = new List<Contributor> { new Contributor() { PilotID = 1 } };
@@ -107,7 +107,7 @@ namespace AviTests
         }
 
         [Fact]
-        public async Task GetFilesByPilotIDShouldCallGetFilesByPilotID()
+        public void GetFilesByPilotIDShouldCallGetFilesByPilotID()
         {
             int pilotId = 1;
             var files = new List<File> { new File() { PilotID = 1 } };
@@ -120,7 +120,7 @@ namespace AviTests
         }
 
         [Fact]
-        public async Task GetFilesBySceneIdShouldCallGetFilesBySceneId()
+        public void GetFilesBySceneIdShouldCallGetFilesBySceneId()
         {
             int scenId = 1;
             var files = new List<File> { new File() { PilotID = 1 } };
@@ -133,7 +133,7 @@ namespace AviTests
         }
 
         [Fact]
-        public async Task GetPilotByIDShouldCallGetPilotByID()
+        public void GetPilotByIDShouldCallGetPilotByID()
         {
             int pilotId = 1;
             var pilot = new Pilot();
@@ -146,7 +146,7 @@ namespace AviTests
         }
 
         [Fact]
-        public async Task GetScenesByPilotIDShouldCallGetScenesByPilotID()
+        public void GetScenesByPilotIDShouldCallGetScenesByPilotID()
         {
             int pilotId = 1;
             var scenes = new List<Scene> { new Scene() { PilotID = 1 } };
@@ -159,7 +159,7 @@ namespace AviTests
         }
 
         [Fact]
-        public async Task GetScriptByPilotIDShouldCallGetScriptByPilotID()
+        public void GetScriptByPilotIDShouldCallGetScriptByPilotID()
         {
             int pilotId = 1;
             var script = new Script();
@@ -172,7 +172,7 @@ namespace AviTests
         }
 
         [Fact]
-        public async Task GetPilotsShouldCallGetPilots()
+        public void GetPilotsShouldCallGetPilots()
         {
             var pilots = new List<Pilot> { new Pilot() };
             _aviatorBLMock.Setup(x => x.GetPilots()).Returns(pilots);

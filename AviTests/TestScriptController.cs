@@ -28,7 +28,7 @@ namespace AviTests
         }
 
         [Fact]
-        public async Task CreateShouldReturnCreatedID()
+        public void CreateShouldReturnCreatedID()
         {
             var newScene = new Scene() { ID = 1};
             var newScript = new Script() { ID = 1 };

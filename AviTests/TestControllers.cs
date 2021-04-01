@@ -22,7 +22,7 @@ namespace AviTests
             _aviMock = new Mock<IAviBL>();
         }
         [Fact]
-        public async Task GetShouldReturnPilotListItems()
+        public void GetShouldReturnPilotListItems()
         {
             var pilots = new List<Pilot> { new Pilot(),new Pilot() };
             _aviMock.Setup(x => x.GetPilots()).Returns(pilots);
@@ -48,7 +48,7 @@ namespace AviTests
         }
 
         [Fact]
-        public async Task GetByIdShouldReturnPilotDetails()
+        public void GetByIdShouldReturnPilotDetails()
         {
             int pilotId = 1;
             var newPilot = new Pilot
@@ -72,7 +72,7 @@ namespace AviTests
         }
 
         [Fact]
-        public async Task CreateShouldReturnCreatedID()
+        public void CreateShouldReturnCreatedID()
         {
             var newPilot = new Pilot { ID = 1 };
             var newPilotCreate = new PilotCreate { ProducerID = 1};
