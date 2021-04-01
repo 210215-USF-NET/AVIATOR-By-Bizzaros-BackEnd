@@ -35,7 +35,7 @@ namespace AviTests
         }
 
         [Fact]
-        public async Task GetWithQueryParamShouldReturnPilotListItems()
+        public void GetWithQueryParamShouldReturnPilotListItems()
         {
             var pilots = new List<Pilot> { new Pilot(), new Pilot() };
             _aviMock.Setup(x => x.GetPilotsByProducerID(1)).Returns(pilots);
