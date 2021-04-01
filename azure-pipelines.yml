@@ -14,6 +14,14 @@ variables:
   buildConfiguration: 'Release'
 
 steps:
+- task: SonarCloudPrepare@1
+  inputs:
+    SonarCloud: 'sonarcloud backend'
+    organization: '210215-usf-net'
+    scannerMode: 'MSBuild'
+    projectKey: '210215-USF-NET_AVIATOR-By-Bizzaros-BackEnd'
+    projectName: 'AVIATOR-By-Bizzaros-BackEnd'
+  
 - task: DotNetCoreCLI@2
   inputs:
     command: 'build'
