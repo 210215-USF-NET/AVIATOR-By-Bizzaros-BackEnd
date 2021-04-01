@@ -184,7 +184,7 @@ namespace AviTests
         }
 
         [Fact]
-        public async Task GetPilotsByProducerIDShouldGetPilots()
+        public void GetPilotsByProducerIDShouldGetPilots()
         {
             var pilots = new List<Pilot> { new Pilot() };
             _aviatorBLMock.Setup(x => x.GetPilotsByProducerID(1)).Returns(pilots);
@@ -193,6 +193,24 @@ namespace AviTests
 
             Assert.Equal(result, pilots);
             _aviatorBLMock.Verify(x => x.GetPilotsByProducerID(1));
+        }
+
+        [Fact]
+        public void DeleteScriptIfExistsShouldDeleteScript()
+        {
+            _aviatorBLMock.Setup(x => x.DeleteScriptIfExists(1));
+            var newAviqtorBL = new AviatorBL(_aviatorBLMock.Object);
+            newAviqtorBL.DeleteScriptIfExists(1);
+            _aviatorBLMock.Verify(x => x.DeleteScriptIfExists(1));
+        }
+
+        [Fact]
+        public void DeleteScenesIfExistsShouldDeleteScenes()
+        {
+            _aviatorBLMock.Setup(x => x.DeleteScenesIfExists(1));
+            var newAviqtorBL = new AviatorBL(_aviatorBLMock.Object);
+            newAviqtorBL.DeleteScenesIfExists(1);
+            _aviatorBLMock.Verify(x => x.DeleteScenesIfExists(1));
         }
     }
 }

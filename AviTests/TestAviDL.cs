@@ -241,6 +241,33 @@ namespace AviTests
                 Assert.Empty(pilots);
             }
         }
+        [Fact]
+        public void DeleteScriptIfExistsShouldDeleteScript()
+        {
+            using (var ctx = new AviDBContext(options))
+            {
+                IAviRepo repo = new AviRepoDB(ctx);
+                Script s = ctx.Scripts.AsNoTracking().FirstOrDefault();
+                Assert.NotNull(s);
+                repo.DeleteScriptIfExists(s.PilotID);
+                Assert.Null(ctx.Scripts.FirstOrDefault(s2 => s2.PilotID == s.PilotID));
+            }
+        }
+        [Fact]
+        public void DeleteScenesIfExistsShouldDeleteScenes()
+        {
+            using (var ctx = new AviDBContext(options))
+            {
+                IAviRepo repo = new AviRepoDB(ctx);
+                List<Scene> scenes = ctx.Pilots.Where(p => p.ID == 1).Include(p => p.Scenes).AsNoTracking().FirstOrDefault().Scenes;
+                Assert.NotNull(scenes);
+                Assert.NotEmpty(scenes);
+                repo.DeleteScenesIfExists(1);
+                scenes = ctx.Pilots.Where(p => p.ID == 1).Include(p => p.Scenes).AsNoTracking().FirstOrDefault().Scenes;
+                Assert.NotNull(scenes);
+                Assert.Empty(scenes);
+            }
+        }
         private async Task Seed()
         {
             using (var ctx = new AviDBContext(options))
