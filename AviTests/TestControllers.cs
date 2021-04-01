@@ -35,6 +35,19 @@ namespace AviTests
         }
 
         [Fact]
+        public void GetWithQueryParamShouldReturnPilotListItems()
+        {
+            var pilots = new List<Pilot> { new Pilot(), new Pilot() };
+            _aviMock.Setup(x => x.GetPilotsByProducerID(1)).Returns(pilots);
+            var newAviqtorBL = new PilotController(_aviMock.Object);
+            var result = newAviqtorBL.Get(1);
+
+            Assert.IsAssignableFrom<IEnumerable<PilotListItem>>(result);
+            Assert.Equal(2, result.Count());
+            _aviMock.Verify(x => x.GetPilotsByProducerID(1));
+        }
+
+        [Fact]
         public void GetByIdShouldReturnPilotDetails()
         {
             int pilotId = 1;

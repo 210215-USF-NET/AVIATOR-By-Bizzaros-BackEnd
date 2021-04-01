@@ -126,5 +126,66 @@ namespace AviTests
             Assert.Equal(newScriptCreate.PilotID, result.PilotID);
             Assert.Equal(newScriptCreate.UserID, result.ScriptWriterID);
         }
+
+        [Fact]
+        public void FileCreate_ToDLModelShouldMapToFile()
+        {
+            var newFile = new FileCreate
+            {
+                FileDescription = "asdf",
+                PilotID = 1,
+                UserID = 1,
+                FileName = "file.txt",
+                ParsedID = "parsedid"
+            };
+            var result = newFile.ToDLModel();
+            Assert.Equal(newFile.FileDescription, result.FileDescription);
+            Assert.Equal(newFile.PilotID, result.PilotID);
+            Assert.Equal(newFile.UserID, result.UploaderID);
+            Assert.Equal(newFile.FileName, result.FileName);
+            Assert.Equal(newFile.ParsedID, result.ParsedID);
+        }
+
+        [Fact]
+        public void FileMinimal_FromDLModelShouldMapToFileMinimal()
+        {
+            var newFile = new File { ID = 1, FileURL = "fileUrl", FileName = "filename", FileDescription = "description", ParsedID = "parsedId", Uploader = new User { ID = 1, UserName = "userMinimalName" }, Pilot = new Pilot { Files = new List<File>(), Script = new Script { ScriptWriter = new User() } }, SceneFiles = new List<SceneFile>() };
+            var result = FileMinimal.FromDLModel(newFile);
+            Assert.Equal(result.ID, newFile.ID);
+            Assert.Equal(result.FileURL, newFile.FileURL);
+            Assert.Equal(result.ParsedID, newFile.ParsedID);
+        }
+
+        [Fact]
+        public void SceneFileCreate_ToDLModelShouldMapToSceneFile()
+        {
+            var newSceneFile = new SceneFileCreate
+            {
+                FileID = 1,
+                SceneID = 1
+            };
+            var result = newSceneFile.ToDLModel();
+            Assert.Equal(newSceneFile.FileID, result.FileID);
+            Assert.Equal(newSceneFile.SceneID, result.SceneID);
+        }
+
+        [Fact]
+        public void ScriptDetails_FromDLModelShouldMapToScriptDetails()
+        {
+            var newScript = new Script { ID = 1, PilotID = 1, ScriptURL = "https://google.com", ScriptWriter = new User { ID = 1 }, ScriptWriterID = 1 };
+            var result = ScriptDetails.FromDLModel(newScript);
+            Assert.Equal(newScript.ID, result.ID);
+            Assert.Equal(newScript.ScriptURL, result.ScriptURL);
+            Assert.Equal(newScript.ScriptWriterID, result.Scriptwriter.ID);
+        }
+
+        [Fact]
+        public void UserMinimal_FromDLModelShouldMapToUserMinimal()
+        {
+            var newUser = new User { ID = 1, UserName = "asdf" };
+            var result = UserMinimal.FromDLModel(newUser);
+            Assert.Equal(newUser.ID, result.ID);
+            Assert.Equal(newUser.UserName, result.UserName);
+        }
     }
 }
