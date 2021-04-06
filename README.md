@@ -10,7 +10,7 @@ The objective of this application is to create a space for animators, producers,
 - The system must allow the producers and screenwriters to submit files to pilot.
 - The system must allow the producers and screenwriters to view pilot’s submitted files.
 - The system must allow the producers and screenwriters to view parsed script elements and select characters and scenes from the list.
-Script Parser
+### Script Parser
 - When uploaded, scripts are parsed by the browser.
 - The system must allow the scenes to be created automatically based on the parsed script.
 - The system must allow the elements to be created automatically based on the parsed script.
